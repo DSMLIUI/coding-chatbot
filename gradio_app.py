@@ -12,14 +12,28 @@ def chat_with_file(message, history, file):
 
     # Handle file if provided
     if file:
-        file_content = file.decode('utf-8')
-        response = chat_bot.analyze_code(file_content, message)
+        file_content = file.name
+        # Get file extension and map to language
+        file_extension = file_content.split('.')[-1].lower()
+        language_map = {
+            'py': 'python',
+            'js': 'javascript',
+            'java': 'java',
+            'cpp': 'cpp',
+            'txt': 'text',
+            'sh': 'bash'
+        }
+        file_language = language_map.get(file_extension, 'text')
+
+        with open(file_content, 'r') as f:
+            file_content = f.read()
+        response = chat_bot.analyze_code(file_content, message, file_language)
     else:
         # Regular chat without file
         chat_bot.add_message("user", message)
-        response = chat_bot.analyze_code("", message)
+        response = chat_bot.analyze_code("", message, "")
 
-    # Return the message pair format that Gradio expects: [user_message, assistant_response]
+    # Return the message pair format that Gradio expects
     history.append((message, response))
     return history
 
@@ -39,10 +53,9 @@ with gr.Blocks() as demo:
         )
         file_upload = gr.File(
             label="Upload Code File (optional)",
-            file_types=[".py", ".js", ".java", ".cpp", ".txt"],
+            file_types=[".py", ".js", ".java", ".cpp", ".txt", ".sh"],
             scale=1
         )
-
     clear = gr.ClearButton([txt, chatbot, file_upload])
 
     txt_msg = txt.submit(

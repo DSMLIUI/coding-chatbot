@@ -18,11 +18,12 @@ class OllamaChat:
     def add_message(self, role: str, content: str):
         self.messages.append({"role": role, "content": content})
 
-    def analyze_code(self, file_content: str, prompt: str):
+    def analyze_code(self, file_content: str, prompt: str, file_lang: str):
         self.add_message("user", prompt)
 
         if file_content:
-            self.add_message("user", f"Here is the code to analyze:\n\n{file_content}\n\n{prompt}")
+            self.add_message(
+                "user", f"Here is the code to analyze:\n```{file_lang}\n{file_content}```")
 
         response = self.client.chat.completions.create(
             model=self.model,
