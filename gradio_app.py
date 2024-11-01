@@ -1,8 +1,22 @@
 import gradio as gr
 from ollama_chat import OllamaChat
 
+"""
+Handles the chat interaction between the user and the AI assistant,
+including the ability to analyze code files provided by the user.
+
+Args:
+    message (str): The user's message to the chat assistant.
+    history (list): The chat history, represented as a list of (user_message, assistant_response) tuples.
+    file (gradio.File): An optional file uploaded by the user, which will be analyzed by the AI assistant.
+
+Returns:
+    list: The updated chat history, including the assistant's response to the user's message.
+"""
+
 
 def chat_with_file(message, history, file):
+
     chat_bot = OllamaChat()
 
     # Restore chat history
@@ -39,12 +53,24 @@ def chat_with_file(message, history, file):
 
 
 # Create the Gradio interface
+"""
+Displays a Gradio chatbot interface that allows users to chat with an AI assistant and optionally upload code files for analysis.
+
+The chatbot interface includes:
+- A Chatbot widget to display the conversation history
+- A Textbox widget for the user to enter their message
+- A File upload widget to allow the user to upload a code file
+- A ClearButton to reset the chat history and input fields
+
+When the user submits a message or uploads a file, the `chat_with_file` function is called to handle the interaction. This function restores the chat history, analyzes any uploaded code file, and generates a response from the AI assistant. The updated chat history is then returned to be displayed in the Chatbot widget.
+"""
 with gr.Blocks() as demo:
     chatbot = gr.Chatbot(
         label="Chat with Code Assistant",
         height=600
     )
 
+    # Chat boxes
     with gr.Row():
         txt = gr.Textbox(
             label="Type your message",
@@ -58,6 +84,7 @@ with gr.Blocks() as demo:
         )
     clear = gr.ClearButton([txt, chatbot, file_upload])
 
+    # What to do when the user presses `Enter`
     txt_msg = txt.submit(
         chat_with_file,
         inputs=[txt, chatbot, file_upload],
