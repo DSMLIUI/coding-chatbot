@@ -1,47 +1,25 @@
 # Let's Build A Coding Chatbot
 
-## Install Ollama
-Got to `ollama.com/downloads` and download the appropriate version for your operating system.
+## Make sure you have Git & Python Installed
 
-## Run Ollama
-### Windows
-1. Open Ollama
-
-### Mac & Linux
-1. Open Terminal
-
-### Both
-2. Run 
+## Clone the Repository
 ```bash
-ollama run qwen2.5-coder
+git clone https://github.com/coding-chatbot/coding-chatbot.git
 ```
 
-## Play with chatting with the model
-How does it work?
-
-## Install Python
-
-### All
-1. Visit [Python Downloads](https://www.python.org/downloads/)
-2. Download the latest Python installer for Windows
-3. Run the installer
-4. Check "Add Python to PATH" during installation
-5. Click "Install Now"
-
-### Windows
-
-6. Verify installation by opening Command Prompt and running:
-
+## Run on_start.sh
 ```bash
-python --version
+cd coding-chatbot
+chmod +x on_start.sh
+./on_start.sh
+```
+## Run Gradio
+```bash
+python gradio_app.py
 ```
 
-### Mac Alternative
-```bash
-brew install python
-```
+## Open the URL in your browser
+The url should be http://127.0.0.1:7860
 
-Verify installation by opening Terminal and running:
-```bash
-python --version
-```
+## Example Display
+![Example Display](images/Example_display.png)
