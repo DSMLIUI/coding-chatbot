@@ -1,25 +1,33 @@
 # Let's Build A Coding Chatbot
 
-## Make sure you have Git & Python Installed
+## How To Run The Chatbot
 
-## Clone the Repository
+Make sure you have Git & Python Installed
+
+## 1. Clone the Repository
 ```bash
 git clone https://github.com/coding-chatbot/coding-chatbot.git
 ```
 
-## Run on_start.sh
+## 2. Run on_start.sh
 ```bash
 cd coding-chatbot
 chmod +x on_start.sh
 ./on_start.sh
 ```
-## Run Gradio
+## 3. Run Gradio
 ```bash
 python gradio_app.py
 ```
 
-## Open the URL in your browser
+## 4. Open the URL in your browser
 The url should be http://127.0.0.1:7860
 
 ## Example Display
 ![Example Display](images/Example_display.png)
+
+## Tools Used
+- [Gradio](https://gradio.app/)
+- [OpenAI SDK](https://openai.com/)
+- [Ollama](https://ollama.com/)
+- [Qwen2.5-Coder](https://qwenlm.github.io/blog/qwen2.5-coder/)
