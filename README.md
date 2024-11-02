@@ -24,7 +24,7 @@ python gradio_app.py
 The url should be http://127.0.0.1:7860
 
 ## Example Display
-![Example Display](images/Example_display.png)
+![Example Display](images/SuperSlowCodingDemo.gif)
 
 ## Tools Used
 - [Gradio](https://gradio.app/)
