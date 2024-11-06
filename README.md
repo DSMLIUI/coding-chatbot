@@ -9,7 +9,18 @@ Make sure you have Git & Python Installed
 git clone https://github.com/coding-chatbot/coding-chatbot.git
 ```
 
-## 2. Run on_start.sh
+## 1.5 (If running locally & not on Linux make sure you have Ollama Installed)
+If you do not have Ollama installed you can install it here: [Ollama Downlaod](https://ollama.com/download)
+
+## 2. Run `on_start.sh`
+### Uncomment these lines from `on_start.sh` if running locally and save it:
+```bash
+# python -m venv .venv # Uncomment if running locally
+# source .venv/bin/activate # Uncomment if running locally
+```
+Uncomment by highlighting them and pressing `CTRL (CMD on Mac) \`
+It creates a virtual environment to download all the python dependencies.
+
 ```bash
 cd coding-chatbot
 chmod +x on_start.sh
@@ -21,7 +32,7 @@ python gradio_app.py
 ```
 
 ## 4. Open the URL in your browser
-The url should be http://127.0.0.1:7860
+The url should be [http://127.0.0.1:7860](http://127.0.0.1:7860)
 
 ## Example Display
 ![Example Display](images/SuperSlowCodingDemo.gif)
