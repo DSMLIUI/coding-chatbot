@@ -19,7 +19,8 @@ If you do not have Ollama installed you can install it here: [Ollama Downlaod](h
 # source .venv/bin/activate # Uncomment if running locally
 ```
 Uncomment by highlighting them and pressing `CTRL (CMD on Mac) \`
-It creates a virtual environment to download all the python dependencies.
+
+This will create a virtual environment to download all the Python dependencies.
 
 ```bash
 cd coding-chatbot
